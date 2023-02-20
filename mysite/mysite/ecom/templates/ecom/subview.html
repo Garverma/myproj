@@ -1,0 +1,30 @@
+{% extends 'ecom/sellermaster.html'%} 
+{%block title%} {{data.sub.name}}{%endblock%}
+{%block body%}
+{%if 'user_log' in request.session%}
+<div>
+    <p><h5>{{data.sub.name}}</h5><a href="{% url 'ecom:addproduct' data.sub.id%}" class="btn btn-primary">Addproduct</a> </p>
+</div>
+<div class='row'>
+	{%for j in data.prod%}
+	<div class='column'>
+  <div class="card" style="width: 18rem;">
+	<img src="{{j.image.url}}" class="card-img-top" alt="...">
+	<div class="card-body">
+	  <h5 class="card-title">{{j.name}},{{j.brand}}</h5>
+	  <h6>{{j.price}},{{j.discount}}%</h6>
+	  <p>{{j.desc}}</p> 
+	  <p>
+	  <a href="{% url 'ecom:upproduct' j.id%}" class="btn btn-primary">update</a>
+	  <a href="{% url 'ecom:delproduct' j.id%}" class="btn btn-primary">delete</a>
+	   </p>
+	</div>
+  </div>
+  </div>
+  {%endfor%}
+  </div>
+
+{%else%}
+{%endif%}
+
+{%endblock%}

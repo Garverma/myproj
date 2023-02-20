@@ -1,0 +1,22 @@
+{%extends "ecom/sellermaster.html"%}
+{%block title%}DELETE PRODUCT{%endblock%}
+{%block body%}
+<form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class='row'>
+	
+	<div class='column'>
+  <div class="card" style="width: 18rem;">
+	<img src="{{prod.image.url}}" class="card-img-top" alt="...">
+	<div class="card-body">
+	  <h5 class="card-title">{{prod.name}},{{prod.brand}}</h5>
+	  <h6>{{prod.price}},{{prod.discount}}%</h6>
+	  <p>{{prod.desc}}</p> 
+	 <input type="submit" value='Submit'>
+    </div>
+  </div>
+  </div>
+  </div>   
+    </form>
+    {{message}}
+{%endblock%}
